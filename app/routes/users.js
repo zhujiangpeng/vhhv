@@ -24,7 +24,7 @@ router.post('/up',(req,res)=>{
 					},
 				})
 			}
-		}
+		},
 		error(err){
 			res.send(err)
 		}

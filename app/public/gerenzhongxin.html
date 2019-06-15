@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="styles/simditor.css" />
+		<script src="jquery.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="scripts/module.min.js"></script>
+		<script type="text/javascript" src="scripts/hotkeys.min.js"></script>
+		<script type="text/javascript" src="scripts/uploader.min.js"></script>
+		<script type="text/javascript" src="scripts/simditor.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.y_big {
+				width: 1000px;
+				margin: 0 auto;
+			}
+			
+			.y_avatarCover {
+				width: 60px;
+				height: 60px;
+				border: 1px solid #ccc;
+				border-radius: 50%;
+			}
+			#y_main img{
+				width: 80px;
+				height: 80px;
+				border-radius: 50%;
+			}
+			.y_userNav #y_main {
+				width: 600px;
+				height: 80px;
+				font: 12px/1.5 'MicroSoft YaHei';
+				color: #333;
+				margin-top: 20px;
+			}
+			
+			.y_booklist {
+				width: 700px;
+				height: 600px;
+				float: left;
+			}
+			
+			.y_everyone {
+				width: 100px;
+				height: 80px;
+				float: left;
+				margin-right: 100px;
+				margin-bottom: 150px;
+			}
+			
+			.y_everyone img {
+				width: 150px;
+				height: 200px;
+			}
+			
+			#ul {
+				list-style: none;
+				overflow: hidden;
+			}
+			
+			#ul li {
+				float: left;
+				padding: 10px 16px;
+				border: 1px solid #fff;
+				margin: 0 10px;
+			}
+			
+			.box_table {
+				min-height: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="y_big">
+			<!-- 头部 -->
+			<div class="y_userNav QUI">
+				<!-- 头像&昵称 -->
+				<div class="y_userinfo">
+					<div id="y_main" style="display: inline-block;">
+						
+						<span id="y_userName"></span>
+					</div>
+					<div style="line-height: 80px;font-size: 20px;width: 200px;margin-right: 60px;float: right;" id="type_t">
+						<span class="btn btn-my" id="my_btn">
+							个人中心
+						</span>
+						<span class="btn btn-info" id="t_btn">
+							退出登陆
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- 推荐小说 -->
+			<div class="y_box">
+				<h2 class="y_b-tit">
+					<span class="con">热门推荐</span>
+				</h2>
+
+				<div class="y_booklist">
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://cdn.static.17k.com/book/189x272/39/32/493239.jpg-189x272" onerror="this.src='//static.17k.com/pic/default_cover.png'">
+							<p>修罗武神</p>
+						</a>
+					</div>
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://img.17k.com/images/bookcover/2017/13288/66/2657640-1505730925000_1.jpg" />
+							<p>太古魂帝</p>
+						</a>
+					</div>
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://img.17k.com/images/bookcover/2016/9145/45/1829091-1463365293000_1.jpg" />
+							<p>三界仙缘</p>
+						</a>
+					</div>
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://img.17k.com/images/bookcover/2016/9534/47/1906906-1465352441000_1.jpg" />
+							<p>陨神记</p>
+						</a>
+					</div>
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://img.17k.com/images/bookcover/2016/9288/46/1857676-1462531241000_1.jpg" />
+							<p>妖圣传</p>
+						</a>
+					</div>
+					<div class="y_everyone">
+						<a href="" target="_blank">
+							<img src="https://img.17k.com/images/bookcover/2016/9348/46/1869667-1465188307000_1.jpg" />
+							<p>奇术之王</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		t_btn.onclick = function(){
+			location.href = 'index.html'
+		}
+		my_btn.onclick = function(){
+			location.href = 'me.html'
+		}
+		if (localStorage.users) {
+			var users = JSON.parse(localStorage.users)
+			console.log(users)
+			y_main.innerHTML=`<img src="${users.img}" />
+				<span id="y_userName">${users.user}</span>
+			`
+		}
+	</script>
+</html>

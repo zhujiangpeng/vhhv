@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 /* GET users listing. */
 //文件上传
-router.use(multer({dest:'/public/file'}).any())
+router.use(multer({dest:'./public/file'}).any())
 router.post('/img',(req,res)=>{
 	var f = req.files[0]
 	var oldname = f.filename

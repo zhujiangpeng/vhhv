@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles/simditor.css" />
+	<script src="jquery.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="scripts/module.min.js"></script>
+	<script type="text/javascript" src="scripts/hotkeys.min.js"></script>
+	<script type="text/javascript" src="scripts/uploader.min.js"></script>
+	<script type="text/javascript" src="scripts/simditor.min.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			user-select: none;
+		}
+		.x_content{
+			width: 600px;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="x_content">
+		<div id="x_head" style="height: 30px">
+			<p><span style="float: left;font-size: 20px;padding: 0 6px;background: #f67;" id="x_bookrack">书架</span> | <span style="font-size: 20px;padding: 0 6px;" id="x_my">我的</span><span style="float: right;font-size: 20px;display: none" id="x_upload" data-toggle="modal" data-target="#myModal">创建小说</span></p>
+		</div>
+		<div id="x_box">
+			<div id="x_con_b" style="margin-top: 30px;">
+				<div style="width: 600px;height: 120px;">
+					<img src="" style="width: 80px;height: 110px;background-color: #ccc;float: left;">
+					<div id="x_con_r" style="float: left;margin-left: 20px">
+						<h1 id="x_title">nzkcnksjcjk</h1>
+						<span id="x_author">bnk</span> 	
+						<p id="x_info"style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">zjczjsdcnjknxkcmsdfwejfkdkcmksxmkk</p>
+					</div>
+				</div>
+				<div style="width: 600px;height: 120px;">
+					<img src="" style="width: 80px;height: 110px;background-color: #ccc;float: left;">
+					<div id="x_con_r" style="float: left;margin-left: 20px">
+						<h1 id="x_title">nzkcnksjcjk</h1>
+						<span id="x_author">bnk</span> 	
+						<p id="x_info"style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">zjczjsdcnjknxkcmsdfwejfkdkcmksxmkk</p>
+					</div>
+				</div>
+				<div style="width: 600px;height: 120px;">
+					<img src="" style="width: 80px;height: 110px;background-color: #ccc;float: left;">
+					<div id="x_con_r" style="float: left;margin-left: 20px">
+						<h1 id="x_title">nzkcnksjcjk</h1>
+						<span id="x_author">bnk</span> 	
+						<p id="x_info"style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">zjczjsdcnjknxkcmsdfwejfkdkcmksxmkk</p>
+					</div>
+				</div>
+				<div style="width: 600px;height: 120px;">
+					<img src="" style="width: 80px;height: 110px;background-color: #ccc;float: left;">
+					<div id="x_con_r" style="float: left;margin-left: 20px">
+						<h1 id="x_title">nzkcnksjcjk</h1>
+						<span id="x_author">bnk</span> 	
+						<p id="x_info"style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">zjczjsdcnjknxkcmsdfwejfkdkcmksxmkk</p>
+					</div>
+				</div>
+				<div style="width: 600px;height: 120px;">
+					<img src="" style="width: 80px;height: 110px;background-color: #ccc;float: left;">
+					<div id="x_con_r" style="float: left;margin-left: 20px">
+						<h1 id="x_title">nzkcnksjcjk</h1>
+						<span id="x_author">bnk</span> 	
+						<p id="x_info"style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">zjczjsdcnjknxkcmsdfwejfkdkcmksxmkk</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--模态框-->
+	<!--录入模态框-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">小说</h4>
+				</div>
+				<div class="modal-body">
+					<!--名字-->
+					<div class="form-group">
+						<label for="user">小说名字</label>
+						<input type="email" class="form-control" id="user" placeholder="小说名字">
+					</div>
+					<div>
+						<label for="text">内容</label>
+						<textarea id="editor" placeholder="Balabala" autofocus></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="btn">录入</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--详情-->
+	<!-- Modal -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<div id="text_box" style="min-height: 300px;">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		// var editor = new Simditor({
+		// 	textarea: $('#editor')
+		// 	//optional options
+		// });
+		btn.onclick = function() {
+			$.ajax({
+				type: "post",
+				url: "http://localhost:8000",
+				data: {
+					name: user.value,
+					text: $('.simditor-body').eq(0).html()
+				},
+				success(data) {
+					if(data == 'yes') {
+						user.value = ''
+						$('.simditor-body').eq(0).html('')
+						$('#myModal').modal('hide')
+						alert('录入成功')
+						num_y()
+						if(sessionStorage.num) {
+							list(Number(sessionStorage.num))
+						} else {
+							list(0)
+						}
+					} else {
+						user.value = ''
+						alert('名字重复')
+					}
+
+				}
+			});
+		}
+		x_bookrack.onclick =function(){
+			x_my.style.background = '#fff'
+			x_bookrack.style.background = '#f67'
+			x_upload.style.display = 'none'
+			x_con_b.style.display = 'block'
+		}
+		x_my.onclick =function(){
+			x_bookrack.style.background = '#fff'
+			x_my.style.background = '#f67'
+			x_upload.style.display = 'block'
+			x_con_b.style.display = 'none'
+		}
+	</script>
+</body>
+</html>

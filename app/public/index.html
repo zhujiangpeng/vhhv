@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>登录/注册</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.x_com{
+			width: 600px;	
+			margin: 0 auto;
+		}
+		.x_login{
+			width: 600px;
+			height: 50px;
+		}
+		.x_login ul li{
+			text-align: center;
+			width: 50%;
+			line-height: 50px;
+			list-style: none;
+			float: left;
+		}
+		#x_img_view img{
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="x_com">
+		<div class="x_login" style=" margin: 0 auto;">
+			<ul style="width: 600px;height: 50px;">
+				<li id="x_loginup" style="background: #f99;">注册</li>
+				<li id="x_loginin">登录</li>
+			</ul>
+		</div>
+		<!-- 头像 -->
+		<div id="x_img_view" style="width: 100px;height: 100px;border-radius: 50%;background-color: #ccc;margin: 10px auto;">
+			
+		</div>
+		<!-- 注册 -->
+		<div id="x_sign" style="width: 400px;padding: 0 50px;">
+			<input type="file" style="margin: 10px auto;margin-left: 15px;" id="x_files">
+			<div id="x_name" style="margin: 10px auto;margin-left: 15px;">
+				昵称：<input type="text" id="x_names_up" style="height: 30px;width: 280px;border: 2px solid #ccc;border-radius: 6px;">	
+			</div>
+			<div id="x_user" style="margin: 10px auto;margin-left: 15px;">
+				账号：<input type="text" id="x_user_up" style="height: 30px;width: 280px;border: 2px solid #ccc;border-radius: 6px;">	
+			</div>
+			<div id="x_pass" style="margin: 10px auto;margin-left: 15px;">
+				密码：<input type="text" id="x_pass_up" style="height: 30px;width: 280px;border: 2px solid #ccc;border-radius: 6px;">	
+			</div>
+			<div style="margin: 30px auto;">
+				<button id="x_btn_up" style="width: 80px;float: right;height: 30px;margin-right: 54px;">确定</button>
+			</div>
+		</div>
+		<!-- 登录 -->
+		<div id="x_register" style="width: 400px;padding: 0 50px;display: none;">
+			<div id="x_user" style="margin: 30px auto;margin-left: 15px;">
+				账号：<input type="text" id="x_user_in" style="height: 30px;width: 280px;border: 2px solid #ccc;border-radius: 6px;">	
+			</div>
+			<div id="x_pass" style="margin: 30px auto;margin-left: 15px;">
+				密码：<input type="text" id="x_pass_in" style="height: 30px;width: 280px;border: 2px solid #ccc;border-radius: 6px;">	
+			</div>
+			<div style="margin: 10px auto;">
+				<button id="x_btn_in" style="width: 80px;float: right;height: 30px;margin-right: 54px;">确定</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		// 文件上传
+		var img_url = ''
+		var href = 'http://localhost:8000'
+		x_files.onchange=function(){
+			var f = x_files.files[0]
+			var d = new FormData
+			d.append('img',f)
+			$.ajax({
+				type:'post',
+				url:href + '/files/img',
+				data:d,
+				contentType:false,
+				processData:false,
+				success(data){
+					// console.log(data)
+					x_img_view.innerHTML = `
+						<img src="${href}${data}" width="100px" height="100px">
+					`
+					img_url = href + data
+				}
+			})
+		}
+		// 注册
+		x_loginup.onclick=function(){
+			x_sign.style.display='block';
+			x_register.style.display='none';
+			x_loginup.style.background = '#f99'
+			x_loginin.style.background = '#fff'
+		}
+		x_btn_up.onclick=function(){
+			$.ajax({
+				type:'post',
+				url:href + '/users/up',
+				data:{
+					name:x_names_up.value,
+					user:x_user_up.value,
+					pass:x_pass_up.value,
+					img:img_url
+				},
+				success(data){
+					alert(data)
+					x_sign.style.display='none';
+					x_register.style.display='block';
+					x_loginup.style.background = '#fff'
+					x_loginin.style.background = '#f99'
+				}
+			})
+			
+		}
+		// 登录
+		x_loginin.onclick=function(){
+			x_sign.style.display='none';
+			x_register.style.display='block';
+			x_loginup.style.background = '#fff'
+			x_loginin.style.background = '#f99'
+		}
+		x_btn_in.onclick=function(){
+			$.ajax({
+				type:'post',
+				url:href + '/users/in',
+				data:{
+					user:x_user_in.value,
+					pass:x_pass_in.value,
+				},
+				success(data){
+					console.log(data);
+					if (data.type == 'ok') {
+						alert('账号或密码错误')
+						x_user_in.value = '';
+						x_pass_in.value = '';
+					}else{
+						logindata = data
+						location.href = 'gerenzhongxin.html';
+						localStorage.users = JSON.stringify(logindata);
+					}
+				}
+			})
+		}
+	</script>
+</body>
+</html>
